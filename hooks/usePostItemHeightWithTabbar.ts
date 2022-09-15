@@ -1,27 +1,23 @@
 import * as React from 'react';
-import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
-import {Platform, StatusBar} from 'react-native';
-import {SIZES} from '../theme/sizes';
+import {Dimensions, Platform} from 'react-native';
+import {Navigation} from 'react-native-navigation';
+const {bottomTabsHeight} = Navigation.constantsSync();
 
-type Props = {
-  transparent?: boolean;
-};
-function usePostItemHeightWithTabbar({transparent = true}: Props) {
-  const tabBarHeight = useBottomTabBarHeight();
-
-  const itemHeight = React.useMemo(() => {
-    if (Platform.OS === 'android') {
-      return (
-        SIZES.screenHeight -
-        tabBarHeight -
-        (transparent === false ? StatusBar.currentHeight || 24 : 0)
+export default function usePostItemHeightWithTabbar() {
+  const [itemHeight, setItemHeight] = React.useState(
+    Dimensions.get('window').height - bottomTabsHeight,
+  );
+  React.useEffect(() => {
+    Navigation.constants().then(c => {
+      setItemHeight(
+        Dimensions.get('window').height -
+          c.bottomTabsHeight -
+          (Platform.OS === 'android' ? c.statusBarHeight : 0),
       );
-    } else {
-      return SIZES.screenHeight - tabBarHeight;
-    }
-  }, [tabBarHeight, transparent]);
-
-  return {itemHeight, tabBarHeight};
+    });
+  }, []);
+  const itemHeightMemo = React.useMemo(() => itemHeight, [itemHeight]);
+  return {
+    itemHeight: itemHeightMemo,
+  };
 }
-
-export {usePostItemHeightWithTabbar};

@@ -13,6 +13,7 @@ import {setContext} from '@apollo/client/link/context';
 import {API_URL} from '../config/config';
 import {RootState} from '../redux/store';
 import {cache} from '../apollo-cache/cache';
+import {UserProfileScreen} from './app-stack-navigator/screens/user-profile/UserProfileScreen';
 
 const WithThemeScreen: React.FC<PropsWithChildren> = ({children}) => {
   const isDarkMode = useIsDarkMode();
@@ -67,6 +68,7 @@ const WithApolloProvider: React.FC<PropsWithChildren> = ({children}) => {
 const WrapScreen: any = (ReduxScreen: any, storeLocal: any) => {
   return (props: any) => {
     return (
+      // eslint-disable-next-line react-native/no-inline-styles
       <GestureHandlerRootView style={{flex: 1}}>
         <Provider store={storeLocal}>
           <WithApolloProvider>
@@ -92,5 +94,12 @@ export const registerScreens = (reduxstore: any) => {
     'Discover',
     () => withNavigationProvider(WrapScreen(DiscoverScreen, reduxstore)),
     () => DiscoverScreen,
+  );
+
+  //=========================User Profile Screen======================//
+  Navigation.registerComponent(
+    'UserProfile',
+    () => withNavigationProvider(WrapScreen(UserProfileScreen, reduxstore)),
+    () => UserProfileScreen,
   );
 };

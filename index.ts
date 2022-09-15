@@ -4,6 +4,7 @@
 import 'react-native-gesture-handler';
 import {Navigation} from 'react-native-navigation';
 import {registerScreens} from './navigation/registerScreens';
+import {tabsNavigator} from './navigation/tabs-navigator/tabsNavigator';
 import store from './redux/store';
 
 Navigation.events().registerAppLaunchedListener(async () => {
@@ -18,56 +19,5 @@ Navigation.events().registerAppLaunchedListener(async () => {
     },
   });
 
-  Navigation.setRoot({
-    root: {
-      stack: {
-        options: {
-          topBar: {
-            visible: false,
-          },
-        },
-        children: [
-          {
-            //@ts-ignore
-            bottomTabs: {
-              children: [
-                {
-                  component: {
-                    name: 'HomeFeed',
-
-                    options: {
-                      bottomTab: {
-                        text: 'Feed',
-                      },
-                    },
-                  },
-                },
-                {
-                  component: {
-                    name: 'Discover',
-
-                    options: {
-                      bottomTab: {
-                        text: 'Discover',
-                      },
-                    },
-                  },
-                },
-                // {
-                //   component: {
-                //     name: 'HomeFeed',
-                //     options: {
-                //       bottomTab: {
-                //         text: 'Tab 2',
-                //       },
-                //     },
-                //   },
-                // },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  });
+  Navigation.setRoot(tabsNavigator);
 });
