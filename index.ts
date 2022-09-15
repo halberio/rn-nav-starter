@@ -1,44 +1,69 @@
 /**
  * @format
  */
-
-import {View} from 'react-native';
+import 'react-native-gesture-handler';
 import {Navigation} from 'react-native-navigation';
-import App from './App';
-import Test from './Test';
-Navigation.registerComponent('WelcomeScreen', () => App);
-Navigation.registerComponent('Test', () => Test);
-Navigation.registerComponent('Test2', () => View);
-Navigation.events().registerAppLaunchedListener(() => {
+import {registerScreens} from './navigation/registerScreens';
+import store from './redux/store';
+
+Navigation.events().registerAppLaunchedListener(async () => {
+  registerScreens(store);
+  Navigation.setDefaultOptions({
+    layout: {
+      componentBackgroundColor: 'white',
+      backgroundColor: '#FFFFFF',
+      orientation: ['portrait'],
+      adjustResize: true,
+      fitSystemWindows: true,
+    },
+  });
+
   Navigation.setRoot({
     root: {
-      bottomTabs: {
+      stack: {
+        options: {
+          topBar: {
+            visible: false,
+          },
+        },
         children: [
           {
-            stack: {
+            //@ts-ignore
+            bottomTabs: {
               children: [
                 {
                   component: {
-                    name: 'WelcomeScreen',
+                    name: 'HomeFeed',
 
                     options: {
                       bottomTab: {
-                        text: 'Tab 1',
+                        text: 'Feed',
                       },
                     },
                   },
                 },
-              ],
-            },
-          },
-          {
-            component: {
-              name: 'Test2',
-              options: {
-                bottomTab: {
-                  text: 'Tab 2',
+                {
+                  component: {
+                    name: 'Discover',
+
+                    options: {
+                      bottomTab: {
+                        text: 'Discover',
+                      },
+                    },
+                  },
                 },
-              },
+                // {
+                //   component: {
+                //     name: 'HomeFeed',
+                //     options: {
+                //       bottomTab: {
+                //         text: 'Tab 2',
+                //       },
+                //     },
+                //   },
+                // },
+              ],
             },
           },
         ],

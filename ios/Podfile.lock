@@ -14,6 +14,9 @@ PODS:
   - hermes-engine (0.70.0)
   - HMSegmentedControl (1.5.6)
   - libevent (2.1.12)
+  - MMKV (1.2.14):
+    - MMKVCore (~> 1.2.14)
+  - MMKVCore (1.2.14)
   - RCT-Folly (2021.07.22.00):
     - boost
     - DoubleConversion
@@ -563,6 +566,9 @@ PODS:
   - React-jsinspector (0.70.0)
   - React-logger (0.70.0):
     - glog
+  - react-native-mmkv (2.4.3):
+    - MMKV (>= 1.2.13)
+    - React-Core
   - React-perflogger (0.70.0)
   - React-RCTActionSheet (0.70.0):
     - React-Core/RCTActionSheetHeaders (= 0.70.0)
@@ -646,6 +652,16 @@ PODS:
     - React-Core
     - React-RCTImage
     - React-RCTText
+  - RNFlashList (1.2.2):
+    - React-Core
+  - RNGestureHandler (2.6.0):
+    - RCT-Folly
+    - RCTRequired
+    - RCTTypeSafety
+    - React
+    - React-Codegen
+    - React-RCTFabric
+    - ReactCommon/turbomodule/core
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -676,6 +692,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
+  - react-native-mmkv (from `../node_modules/react-native-mmkv`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -691,6 +708,8 @@ DEPENDENCIES:
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
+  - "RNFlashList (from `../node_modules/@shopify/flash-list`)"
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -698,6 +717,8 @@ SPEC REPOS:
     - fmt
     - HMSegmentedControl
     - libevent
+    - MMKV
+    - MMKVCore
 
 EXTERNAL SOURCES:
   boost:
@@ -746,6 +767,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
+  react-native-mmkv:
+    :path: "../node_modules/react-native-mmkv"
   React-perflogger:
     :path: "../node_modules/react-native/ReactCommon/reactperflogger"
   React-RCTActionSheet:
@@ -776,6 +799,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   ReactNativeNavigation:
     :path: "../node_modules/react-native-navigation"
+  RNFlashList:
+    :path: "../node_modules/@shopify/flash-list"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -789,6 +816,8 @@ SPEC CHECKSUMS:
   hermes-engine: 8e84f1284180801c1a1b241f443ba64f931ff561
   HMSegmentedControl: 34c1f54d822d8308e7b24f5d901ec674dfa31352
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
+  MMKV: 9c4663aa7ca255d478ff10f2f5cb7d17c1651ccd
+  MMKVCore: 89f5c8a66bba2dcd551779dea4d412eeec8ff5bb
   RCT-Folly: 0080d0a6ebf2577475bda044aa59e2ca1f909cda
   RCTRequired: d0e501e8024056451424aa341daa078c0c620b0d
   RCTTypeSafety: 14a3928ef69eeb4e5bb4f36fefb5ed6a392643ac
@@ -806,6 +835,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: be588b7abbea4f1d03840bc675d68d99380e5bf3
   React-jsinspector: bd839d6c2c28e49fe1373f055735d2abecbd6cf3
   React-logger: 48d82b9be8e44d86668de4453fdb60255516388b
+  react-native-mmkv: 1265a348a4711097ba29c8bcefd5971f48220f2b
   React-perflogger: 77947e49d84e31eb87d454d4ef327542dcfeaebc
   React-RCTActionSheet: 9f5fd6c1666c1a834ab7f45a452ed08b1de44eb8
   React-RCTAnimation: 6fd3db6ca387c8432fd6a26428e940a081bcb476
@@ -821,6 +851,8 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 80c195ffcafb190f531fdc849dc2d19cb4bb2b34
   ReactCommon: de55f940495d7bf87b5d7bf55b5b15cdd50d7d7b
   ReactNativeNavigation: 09c08b52bcff31268579a69e462699b45cbd4252
+  RNFlashList: 13d14d9502661134ad3ba892f81d76bdcbd79755
+  RNGestureHandler: 182b4e135cc4fec4988687e2f123e302dc6b4b71
   Yoga: 82c9e8f652789f67d98bed5aef9d6653f71b04a9
 
 PODFILE CHECKSUM: 031b0425cc8e8d7b835376d61bc15df7bbe4926f
