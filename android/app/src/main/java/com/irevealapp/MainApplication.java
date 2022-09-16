@@ -1,5 +1,6 @@
 package com.irevealapp;
-
+import com.facebook.react.bridge.JSIModulePackage; // <- add
+import com.swmansion.reanimated.ReanimatedJSIModulePackage; 
 import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
@@ -36,6 +37,12 @@ public class MainApplication extends NavigationApplication {
         protected String getJSMainModuleName() {
           return "index";
         }
+
+       @Override 
+        protected JSIModulePackage getJSIModulePackage() {
+        return new ReanimatedJSIModulePackage(); // <- add
+      }
+    
       };
 
   private final ReactNativeHost mNewArchitectureNativeHost =
