@@ -34,9 +34,9 @@ const HomeFeedScreen: NavigationFunctionComponent<IHomeFeedScreenProps> = ({
                         {
                           fromId: `image${item.thumbnail_url}id`,
                           toId: `image${item.thumbnail_url}Dest`,
-                          duration: 200,
+                          duration: 500,
                           interpolation: {
-                            type: 'accelerateDecelerate',
+                            type: 'fastOutSlowIn',
                           },
                         },
                       ],
@@ -46,9 +46,8 @@ const HomeFeedScreen: NavigationFunctionComponent<IHomeFeedScreenProps> = ({
                         {
                           toId: `image${item.thumbnail_url}id`,
                           fromId: `image${item.thumbnail_url}Dest`,
-                          duration: 200,
                           interpolation: {
-                            type: 'accelerateDecelerate',
+                            type: 'fastOutSlowIn',
                           },
                         },
                       ],

@@ -11,7 +11,7 @@ const UserProfileScreen: NavigationFunctionComponent<
   IUserProfileScreenProps
 > = ({thumbnail_url}) => {
   return (
-    <Box flex={1} backgroundColor="danger">
+    <Box flex={1}>
       <FastImage
         resizeMode={FastImage.resizeMode.cover}
         nativeID={`image${thumbnail_url}Dest`}
@@ -35,6 +35,9 @@ UserProfileScreen.options = {
     barStyle: 'black',
     drawBehind: false,
     tabsAttachMode: 'afterInitialTab',
+  },
+  navigationBar: {
+    visible: false,
   },
 };
 export {UserProfileScreen};
